@@ -1,0 +1,11 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	worktree = D:/
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = git@github.com/wangyiyaoF14012110/MyGitTest.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
