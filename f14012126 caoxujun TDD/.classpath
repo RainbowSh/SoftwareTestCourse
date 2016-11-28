@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/ant-1.9.7"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/dbunit-2.5.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/hamcrest-core-1.3"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/JUnit-4.12"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/mockito-core-2.0.70"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/xom-1.2.10"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/dom4j-1.6.1"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

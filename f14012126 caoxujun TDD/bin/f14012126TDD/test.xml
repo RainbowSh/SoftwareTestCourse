@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="Gb2312"?>
+<Table>
+		<Description>
+				<Name/>
+				<FieldCount/>
+				<RecordCount/>
+		</Description>
+		<FieldDefs>
+				<Field1>
+						<Name/>
+						<DataType/>
+						<Size/>
+						<Precision/>
+				</Field1>
+				......
+		</FieldDefs>
+		<Records>
+				<Record0>
+						<field1 />
+						......
+				</Record0>
+				......
+		</Records>
+</Table>
