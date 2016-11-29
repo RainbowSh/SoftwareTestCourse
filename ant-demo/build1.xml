@@ -1,0 +1,58 @@
+﻿<?xml version="1.0"?>
+<project name="myproject" default="distribute" basedir="." >
+    <description>A simple java project.</description>
+    
+    <property name="src.dir" location="src" />
+    <property name="test.dir" location="test" />
+    <property name="build.dir" location="build" />
+    <property name="build.prod.dir" location="${build.dir}/prod" />
+    <property name="build.test.dir" location="${build.dir}/test" />
+    <property name="dist.dir" location="dist" />
+    <property name="lib.dir" location="lib"/>
+    <path id="project.classpath">
+        <pathelement location="${build.prod.dir}" />
+        <pathelement location="${build.test.dir}" />
+        <fileset dir="${lib.dir}" >
+            <include name="*.jar" />
+        </fileset>
+    </path>        
+    
+	<target name="init" description="initial enviroment" depends="clean" >
+		<mkdir dir="${build.prod.dir}" />
+		<mkdir dir="${build.test.dir}" />
+		<mkdir dir="${dist.dir}" />
+	</target>
+	
+	<target name="compile" description="compile source" depends="init" >
+	    <javac srcDir="${src.dir}" destDir="${build.prod.dir}" includeantruntime="on" >
+	        <classpath refid="project.classpath" />
+	    </javac>
+	</target>
+		
+	<target name="compile-test" description="compile source" depends="compile" >
+	    <javac srcDir="${test.dir}" destDir="${build.test.dir}" includeantruntime="on" >
+	        <classpath refid="project.classpath" />
+	    </javac>
+	</target>
+	
+	<target name="unittest" description="test source" depends="compile-test" >
+	    <junit printsummary="true" haltonfailure="false">
+           <classpath refid="project.classpath" />
+           <formatter type="brief" usefile="false"/>
+           <batchtest >
+              <fileset dir="${build.test.dir}" includes="**/*Test.class"/>
+           </batchtest>
+        </junit>
+	</target>
+	
+	<target name="distribute" description="distribute porduct" depends="unittest" >
+	    <jar destfile="${dist.dir}/myporject.jar" basedir="${build.prod.dir}" />
+	</target>	
+	
+	<target name="clean">
+	    <delete dir="${build.dir}" />
+	    <delete dir="${dist.dir}" />
+	</target>
+</project>
+ 
+ 
