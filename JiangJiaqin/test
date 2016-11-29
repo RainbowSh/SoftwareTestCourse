@@ -1,0 +1,210 @@
+/**
+ * homework1:parseXML
+ * */
+////////////////////////////////////////////Table.java
+public class Table {
+	String tableDefineStr;//成员变量用于存储XML字符串
+	public Table(String tableDefineStr){
+		this.tableDefineStr=tableDefineStr;
+	}
+	
+	public String getInnerContent(String label,String xmlStr){//接收一个字符串label用于构造XML标签
+		int beginIndex=xmlStr.indexOf("<"+label+">");//获取起始标签的下标
+		int endIndex=xmlStr.indexOf("</"+label+">");//获取结束标签的下标
+		beginIndex+=("<"+label+">").length();//获取标签内容开始下标
+		String innerContent= xmlStr.substring(beginIndex, endIndex);//获取标签内容
+		return innerContent;
+	}
+
+	public String getName() {
+		return getInnerContent("Name",tableDefineStr);//字符串内容直接返回
+	}
+
+	public int getFieldCount() {
+		return Integer.parseInt(getInnerContent("FieldCount",tableDefineStr));//计数内容先转换为字符串再返回
+	}
+
+	public int getRecordCount() {
+		return Integer.parseInt(getInnerContent("RecordCount",tableDefineStr));
+	}
+
+	public String getNameInField1() {
+		return getInnerContent("Name",getInnerContent("Field1",tableDefineStr));
+	}
+
+	public String getDataTypeInField1() {
+		return getInnerContent("DataType",getInnerContent("Field1",tableDefineStr));
+	}
+
+	public int getSizeInField1() {
+		return Integer.parseInt(getInnerContent("Size",getInnerContent("Field1",tableDefineStr)));
+	}
+
+	public int getPrecisionInField1() {
+		return Integer.parseInt(getInnerContent("Precision",getInnerContent("Field1",tableDefineStr)));
+	}
+
+	public String getNameInField2() {
+		return getInnerContent("Name",getInnerContent("Field2",tableDefineStr));
+	}
+
+	public String getDataTypeInField2() {
+		return getInnerContent("DataType",getInnerContent("Field2",tableDefineStr));
+	}
+
+	public int getSizeInField2() {
+		return Integer.parseInt(getInnerContent("Size",getInnerContent("Field2",tableDefineStr)));
+	}
+
+	public int getPrecisionInField2() {
+		return Integer.parseInt(getInnerContent("Precision",getInnerContent("Field2",tableDefineStr)));
+	}
+
+	public String getField1InRecord0() {
+		return getInnerContent("field1",getInnerContent("Record0",tableDefineStr));
+	}
+
+	public int getField2InRecord0() {
+		return Integer.parseInt(getInnerContent("field2",getInnerContent("Record0",tableDefineStr)));
+	}
+
+	public String getField1InRecord1() {
+		return getInnerContent("field1",getInnerContent("Record1",tableDefineStr));
+	}
+
+	public int getField2InRecord1() {
+		return Integer.parseInt(getInnerContent("field2",getInnerContent("Record1",tableDefineStr)));
+	}
+
+}
+////////////////////////////////////////////////////////////////////TableDefineParser.java
+import java.lang.*;
+
+public class TableDefineParser {
+	public Table parse(String tableDefineStr) {
+		Table table=new Table(tableDefineStr);//利用构造函数将字符串传递给table对象
+		return table;//返回table引用	
+	}
+}
+///////////////////////////////////////////////////////////////////RecordDefineParser.java
+public class RecordDefineParser {
+	public Table parse(String tableDefineStr) {
+		Table table=new Table(tableDefineStr);//利用构造函数将字符串传递给table对象
+		return table;//返回table引用		
+	}
+}
+///////////////////////////////////////////////////////////////////FieldDefineParser.java
+public class FieldDefineParser {
+	public Table parse(String tableDefineStr) {
+		Table table=new Table(tableDefineStr);//利用构造函数将字符串传递给table对象
+		return table;//返回table引用		
+	}
+}
+/////////////////////////////////////////////////////////////////TableDefinePaserTest.java
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * @author Hadwin
+ *
+ */
+public class TableDefinePaserTest {
+
+	@Test
+	public void shouldParseTableDefineToTable()throws Exception {
+		String tableDefineStr="<Description>"+
+									"<Name>Table</Name>"+
+									"<FieldCount>4</FieldCount>"+
+									"<RecordCount>2</RecordCount>"+
+							  "</Description>";
+		TableDefineParser parser=new TableDefineParser();
+		//Act
+		Table actual=parser.parse(tableDefineStr);
+		
+		//Assert
+		assertEquals("Table",actual.getName());
+		assertEquals(4,actual.getFieldCount());
+		assertEquals(2,actual.getRecordCount());
+	}
+}
+///////////////////////////////////////////////////////////////////RecordDefineParserTest.java
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * @author Hadwin
+ *
+ */
+public class RecordDefineParserTest {
+
+	@Test
+	public void shouldParseRecordDefineToRecord()throws Exception{
+		String recordDefineStr="<Records>"+
+									"<Record0>"+
+										"<field1>F123</field1>"+
+										"<field2>18</field2>"+
+									"</Record0>"+
+									"<Record1>"+
+										"<field1>F124</field1>"+
+										"<field2>19</field2>"+
+									"</Record1>"+
+								"</Records>";
+		RecordDefineParser paser=new RecordDefineParser();
+		//Act
+		Table actual=paser.parse(recordDefineStr);
+		
+		//Assert
+		assertEquals("F123", actual.getField1InRecord0());
+		assertEquals(18, actual.getField2InRecord0());
+		
+		assertEquals("F124", actual.getField1InRecord1());
+		assertEquals(19, actual.getField2InRecord1());
+	}
+
+}
+//////////////////////////////////////////////////////////////////FieldDefinePaserTest.java
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+/**
+ * @author Hadwin
+ *
+ */
+public class FieldDefinePaserTest {
+
+	@Test
+	public void shouldParseFieldDefineToField()throws Exception{
+		String fieldDefineStr="<FieldDefs>"+
+									"<Field1>"+
+										"<Name>No</Name>"+
+										"<DataType>VARCHAR</DataType>"+
+										"<Size>20</Size>"+
+										"<Precision>20</Precision>"+
+									"</Field1>"+
+									"<Field2>"+
+										"<Name>Age</Name>"+
+										"<DataType>INT</DataType>"+
+										"<Size>150</Size>"+
+										"<Precision>3</Precision>"+
+									"</Field2>"+
+								"</FieldDefs>";
+		FieldDefineParser parser=new FieldDefineParser();
+		//Act
+		Table actual=parser.parse(fieldDefineStr);
+		
+		//Assert
+		assertEquals("No",actual.getNameInField1());
+		assertEquals("VARCHAR",actual.getDataTypeInField1());
+		assertEquals(20,actual.getSizeInField1());
+		assertEquals(20,actual.getPrecisionInField1());
+		
+		assertEquals("Age",actual.getNameInField2());
+		assertEquals("INT",actual.getDataTypeInField2());
+		assertEquals(150,actual.getSizeInField2());
+		assertEquals(3,actual.getPrecisionInField2());
+									
+	}
+}
