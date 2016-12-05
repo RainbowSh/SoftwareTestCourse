@@ -18,11 +18,11 @@ public class FieldDefineParserTest {
 	         throws Exception {
 //		Arrangement
 		String fieldDefineStr = "<FieldDefs>" +
-                                   "<Name>Table</Name>" +
+                                                    "<Name>Table</Name>" +
 				                    "<DataType>int</DataType>" +
-                                    "<size>4</size>" +
+                                                    "<size>4</size>" +
 				                    "<Precision/>1</Precision>" +
-				                "<FieldDefs>";
+				         "<FieldDefs>";
 		FieldDefineParser parser = new FieldDefineParser();
 		
 		String FieldDefineStr = null;
