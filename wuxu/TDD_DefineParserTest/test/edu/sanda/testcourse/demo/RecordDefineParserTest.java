@@ -18,15 +18,15 @@ public class RecordDefineParserTest {
 	         throws Exception {
 //		Arrangement
 		String recordDefineStr = "<Records>" +
-                                     "<Record0>" +
-                                         "<field1/>" +
-                                             "<Name>Table</Name>" +
-                                             "<DataType>int</DataType>" +
-                                             "<size>4</size>" +
-                                             "<Precision/>1<Precision>" +
-                                         "</field1>" +
-                                      "</Record0>" +
-				                 "<Records>";
+                                             "<Record0>" +
+                                                 "<field1/>" +
+                                                     "<Name>Table</Name>" +
+                                                     "<DataType>int</DataType>" +
+                                                     "<size>4</size>" +
+                                                     "<Precision/>1<Precision>" +
+                                                 "</field1>" +
+                                              "</Record0>" +
+				          "<Records>";
 		RecordDefineParser parser = new RecordDefineParser();
 		
 		String RecordDefineStr = null;
