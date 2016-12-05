@@ -16,10 +16,10 @@ public class TableDefineParserTest {
 	         throws Exception {
 //		Arrangement
 		String tableDefineStr = "<Description>" +
-                                    "<Name>Table</Name>" +
-				                    "<FieldCount>4</FieldCount>" +
-                                    "<RecordCount>2</RecordCount>" +
-				                "<Description>";
+                                             "<Name>Table</Name>" +
+				             "<FieldCount>4</FieldCount>" +
+                                             "<RecordCount>2</RecordCount>" +
+				             "<Description>";
 		TableDefineParser parser = new TableDefineParser();
 		
 //		Act
