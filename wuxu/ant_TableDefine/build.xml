@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<project name="TableDefineDemo" default="test" basedir="." >
+   <target name="test" description="test ant.">
+      <echo message="Ant is working properly"/>
+   </target> 
+</project>
