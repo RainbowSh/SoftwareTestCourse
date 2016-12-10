@@ -1,9 +1,8 @@
-/**
- * softwareTestHomework2:implementStringStackWithFunctionPushAndPop
- */
-///////////////////////////////////////////////////////////StringStack.java
+homework2implementStringStackWithFunctionPushAndPop
+ 
+StringStack.java
 public class StringStack {
-	String string="";
+	String string=;
 	public String push(String string){
 		this.string+=string;
 		return this.string;
@@ -21,24 +20,24 @@ public class StringStack {
 	}
 	
 }
-//////////////////////////////////////////////////////////StringStackTest.java
-import static org.junit.Assert.*;
+StringStackTest.java
+import static org.junit.Assert.;
 
 import org.junit.Test;
 
-/**
- * @author Hadwin
- *
- */
+
+  @author Hadwin
+ 
+ 
 public class StringStackTest {
 
 	@Test
 	public void shouldPopZYXWhenPushXYZ(){
 		StringStack actual=new StringStack();
-		//Assert
-		assertEquals("X", actual.push("X"));
-		assertEquals("XY", actual.push("Y"));
-		assertEquals("XYZ", actual.push("Z"));
+		Assert
+		assertEquals(X, actual.push(X));
+		assertEquals(XY, actual.push(Y));
+		assertEquals(XYZ, actual.push(Z));
 		
 		assertEquals('Z', actual.pop());
 		assertEquals('Y', actual.pop());
