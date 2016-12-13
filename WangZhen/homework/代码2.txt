@@ -1,0 +1,18 @@
+public class StringStack {
+   String string=¡°¡±£»
+   public String push(String string){
+      this.string+=string£»
+      return this.string£»
+   }
+   public char pop£¨£©{
+       char a = 0;
+       try{
+         a=string.charAt(string.length()-1);
+         string=string.substring(0,string.length()-1);
+         }
+         catch (Exception e){
+           System.out.println(e);
+           }
+           return a;
+       }
+   }

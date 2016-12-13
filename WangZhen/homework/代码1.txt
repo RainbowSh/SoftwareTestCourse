@@ -1,0 +1,18 @@
+  import static org.junit.Assert.*;
+   import org.junit.Test;
+   
+   
+   public class StringStackTest{
+   
+   public void shouldPopZYXWhenPushABC(){
+          StringStack actual=new StringStack();
+   /******Assert******/
+    assertEquals('A',actual.push(A));
+    assertEquals('AB',actual.push(B));
+    assertEquals('ABC',actual.push(C));
+    
+    assertEquals('C',actual.pop());
+    assertEquals('B',actual.pop());
+    assertEquals('A',actual.pop());
+    }
+   } 
