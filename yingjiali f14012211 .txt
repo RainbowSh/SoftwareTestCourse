@@ -1,0 +1,81 @@
+/******StringStack******/ 
+public class StringStack 
+{    
+String string=?¡ã?¡À¡ê?    
+public String push(String string)
+{       
+this.string+=string¡ê?       
+return this.string¡ê?    
+}    
+public char pop¡ê¡§¡ê?{        
+char a = 0;
+try{          
+a=string.charAt(string.length()-1);
+string=string.substring(0,string.length()-1);          
+} 
+catch (Exception e){            
+System.out.println(e);            
+} 
+ return a;        
+}    
+}    
+/******StringStackTest******/    
+import static org.junit.Assert.*;
+import org.junit.Test;        
+@author Yingjiali    
+public class StringStackTest{    
+@test    
+public void shouldPopZYXWhenPushXYZ()
+{           
+StringStack actual=new StringStack();
+    /******Assert******/     
+assertEquals('X',actual.push(X));     
+assertEquals('XY',actual.push(Y));     
+assertEquals('XYZ',actual.push(Z));          
+assertEquals('Z',actual.pop());     
+assertEquals('Y',actual.pop());     
+assertEquals('X',actual.pop());     
+}    
+}     
+   
+
+public class StringStack { 	
+String string=""; 	
+public String push(String string){ 		
+this.string+=string; 		
+return this.string; 	
+} 	
+public char pop() 
+{ 		
+char c = 0; 		
+try { 			
+c=string.charAt(string.length()-1); 			
+string=string.substring(0, string.length()-1);                 
+}                 
+catch (Exception e) 
+{ 			
+System.out.println(e); 		
+} 		
+return c; 	
+} 
+}
+ /**********StringStackTest**************/ 
+import static org.junit.Assert.*; 
+import org.junit.Test;  	
+@author yingjiali      
+public class StringStackTest 
+{
+	
+@Test 	
+public void shouldPopZYXWhenPushXYZ()
+{ 		
+StringStack actual=new StringStack(); 
+/***********Assert**********/ 		
+assertEquals('X', actual.push(X)); 		
+assertEquals('XY', actual.push(Y)); 		
+assertEquals('XYZ', actual.push(Z));  		
+assertEquals('Z', actual.pop()); 		
+assertEquals('Y', actual.pop()); 		
+assertEquals('X', actual.pop()); 	
+} 
+}
