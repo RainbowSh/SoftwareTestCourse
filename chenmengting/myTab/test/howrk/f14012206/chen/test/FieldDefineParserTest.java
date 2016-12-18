@@ -29,7 +29,7 @@ public class FieldDefineParserTest {
 			Table actual =  parser.parse(fieldDefineStr);
 			
 			//Assert
-			assertEquals("Field", actual.getName());
+			assertEquals("Field", actual.getfieldName());
 			assertEquals("char", actual.getDataType());
 			assertEquals(10, actual.getsize());
 			assertEquals(6, actual.getPrecision());
