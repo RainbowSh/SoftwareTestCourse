@@ -23,7 +23,10 @@ public class Table {
 		// TODO Auto-generated method stub
 		return 2;
 	}
-
+	public String getfieldname(){
+		// TODO Auto-generated method stub
+                return "Field";        
+	}	
 	public Object getDataType() {
 		// TODO Auto-generated method stub
 		return "char";
