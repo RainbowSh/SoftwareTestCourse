@@ -1,17 +1,47 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<projectDescription>
-	<name>TableDefineDemo</name>
-	<comment></comment>
-	<projects>
-	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>org.eclipse.jdt.core.javanature</nature>
-	</natures>
-</projectDescription>
+homework2implementStringStackWithFunctionPushAndPop
+ 
+StringStack.java
+public class StringStack {
+	String string=;
+	public String push(String string){
+		this.string+=string;
+		return this.string;
+	}
+	public char pop() {
+		char c = 0;
+		try {
+			c=string.charAt(string.length()-1);
+			string=string.substring(0, string.length()-1);
+			
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		return c;
+	}
+	
+}
+StringStackTest.java
+import static org.junit.Assert.;
+
+import org.junit.Test;
+
+
+  @author Hadwin
+ 
+ 
+public class StringStackTest {
+
+	@Test
+	public void shouldPopZYXWhenPushXYZ(){
+		StringStack actual=new StringStack();
+		Assert
+		assertEquals(X, actual.push(X));
+		assertEquals(XY, actual.push(Y));
+		assertEquals(XYZ, actual.push(Z));
+		
+		assertEquals('Z', actual.pop());
+		assertEquals('Y', actual.pop());
+		assertEquals('X', actual.pop());
+	}
+
+}
