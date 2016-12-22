@@ -1,0 +1,66 @@
+<?xml version="1.0" ?>
+<project name="myproject" default="distribute" basedir=".">
+  <description>A simple java project.</description>
+
+
+	<property name="src.dir" location="src"/>
+	<property name="test.dir" location="test"/>
+	<property name="build.dir" location="build"/>
+	<property name="build.prod.dir" location="${build.dir}/prod"/>
+	<property name="build.test.dir" location="${build.dir}/test"/>
+	<property name="dist.dir" location="dist"/>
+
+	<property name="libs.dir" location="libs"/>
+	<path id="project.classpath">
+			 <pathelement location ="${build.prod.dir}"/>
+			 <pathelement location ="${build.test.dir}"/>
+	  <fileset dir="${libs.dir}">
+
+		<include name="*.jar"/>
+	  </fileset>
+	</path>
+
+
+  <target name ="init" description ="initial environment">
+    <mkdir dir="${build.prod.dir}"/>
+	<mkdir dir="${build.test.dir}"/>
+    <mkdir dir="${dist.dir}"/>
+  </target>
+
+  <target name="compile" description ="compile source" depends="init">
+	<javac srcDir ="${src.dir}" DestDir="${build.prod.dir}" includeantruntime="on">
+      <classpath refid="project.classpath"/>
+	</javac>
+
+  </target> 
+
+  <target name="compile-test" description ="compile test source" depends="compile">
+	<javac srcDir ="${test.dir}" DestDir="${build.test.dir}" includeantruntime="on">
+      <classpath refid="project.classpath"/>
+	</javac>
+  </target>
+
+  <target name="unit-test" description ="unit test" depends="compile-test">
+	<junit printsummary ="true" haltonfailure ="false">
+
+		<classpath refid="project.classpath"/>
+		<formatter type="brief" usefile="false"/>
+		<batchtest>
+			<fileset dir="${build.test.dir}" includes="**/*Test.class" />
+		</batchtest>
+	</junit>
+</target>
+
+
+  <target name="distribute" description ="distribute jar pacakge" depends="unit-test">
+
+		<jar destfile="${dist.dir}/myproject.jar" basedir="${build.prod.dir}" />
+  </target>
+
+
+  <target name="clean">
+	<delete dir="${build.dir}"/>
+	<delete dir="${dist.dir}"/>
+  </target>
+
+</project>
